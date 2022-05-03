@@ -1,413 +1,467 @@
 <!DOCTYPE html>
 <html lang="ru">
-	<head>
-		<meta charset="UTF-8"/>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-		<meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-		<!--====убрать синий цвет у ссылок в сафари ========-->
-		<meta name="format-detection" content="telephone=no"/>
-		<link rel="stylesheet" href="libs/bootstrap/css/bootstrap-reboot.css"/>
-		<link rel="stylesheet" href="libs/bootstrap/css/bootstrap.min.css"/>
-		<link rel="stylesheet" href="libs/scrollbar/perfect-scrollbar.css"/>
-		<link rel="stylesheet" href="css/main.css"/>
-		<title>Main page</title>
-	</head>
-	<body>
-		<div class="decor-wrapper">
-			<div class="decor-1"></div>
-			<div class="decor-2"></div>
-			<div class="decor-3"></div>
-		</div>
-		<div class="container">
-			<header class="header">
-				<div class="header-wrapper"><a class="header-logo-block" href="/">
-						<div class="header-logo" style="display:none"><img src="./img/logo.png" alt="logo"/></div>
-						<div class="header-logo-name">
-							<p>Hunters Game</p>
-						</div></a><a class="btn btn-bright" href="#!" data-bs-toggle="modal" data-bs-target="#chooseCoinModal">Connect Wallet</a></div>
-			</header>
-			<div class="banner">
-				<div class="banner-wrapper">
-					<div class="banner-text-block">
-						<h1 class="title-1">Hunters game</h1>
-						<div class="subtitle">Connect wallet to Register or Login</div>
-						<div class="banner-btn-block"><a class="btn btn-purple btn-icons-left" href="#!" data-bs-toggle="modal" data-bs-target="#chooseCoinModal"><img src="./img/icons/wallet.svg" alt="Connect Wallet"/><span>Connect Wallet</span></a></div>
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<!--====убрать синий цвет у ссылок в сафари ========-->
+	<meta name="format-detection" content="telephone=no" />
+	<link rel="stylesheet" href="libs/bootstrap/css/bootstrap-reboot.css" />
+	<link rel="stylesheet" href="libs/bootstrap/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="libs/scrollbar/perfect-scrollbar.css" />
+	<link rel="stylesheet" href="css/main.css" />
+	<link rel="stylesheet" href="css/modal.css" />
+	<title>Main page</title>
+</head>
+
+<body>
+	<div class="decor-wrapper">
+		<div class="decor-1"></div>
+		<div class="decor-2"></div>
+		<div class="decor-3"></div>
+	</div>
+	<div class="container">
+		<header class="header">
+			<div class="header-wrapper"><a class="header-logo-block" href="/">
+					<div class="header-logo" style="display:none"><img src="./img/logo.png" alt="logo" /></div>
+					<div class="header-logo-name">
+						<p>Hunters Game</p>
 					</div>
-					<div class="banner-img"><img src="./img/banner.png" alt="image"/></div>
+				</a>
+
+				<button class="btn btn-bright" id="clk" onclick=onConnect()>Connect
+					Wallet</button>
+			</div>
+		</header>
+		<div class="banner">
+			<div class="banner-wrapper">
+				<div class="banner-text-block">
+					<h1 class="title-1">Hunters game</h1>
+					<div class="subtitle">Connect wallet to Register or Login</div>
+					<button class="banner-btn-block" onclick=onConnect()>
+						<div class="btn btn-purple btn-icons-left">
+							<img src="./img/icons/wallet.svg" alt="Connect Wallet" />
+							<span>Connect
+								Wallet</span>
+						</div>
+					</button>
 				</div>
-				<div class="banner-description"><img src="./img/icons/clock.svg" alt="clock"/>
-					<p><strong>Level 1 </strong>available in: <strong>01d 09h 43m 20s</strong></p>
+				<div class="banner-img"><img src="./img/banner.png" alt="image" /></div>
+			</div>
+			<div class="banner-description"><img src="./img/icons/clock.svg" alt="clock" />
+				<p><strong>Level 1 </strong>available in: <strong>01d 09h 43m 20s</strong></p>
+			</div>
+		</div>
+		<section class="preview-mode">
+			<div class="title-block">
+				<h2 class="title-2">Preview Mode</h2>
+				<div class="subtitle">Look up any Hunters game member account in preview mode. Enter ID or BNB address to
+					preview.</div>
+			</div>
+			<div class="inputblock">
+				<div class="inputblock-title">Enter ID or BNB wallet</div>
+				<form class="inputblock-wrapper" action="#!" id="preview-mode-form">
+					<div class="inputblock-input">
+						<input type="text" placeholder="example: 12345" />
+						<div class="error-message" id="errorInpuId" data-dismiss="alert">Please enter ID or BNB wallet</div>
+					</div>
+					<input class="btn" type="button" value="Preview" />
+				</form>
+			</div>
+		</section>
+		<section class="levels">
+			<div class="title-block">
+				<h2 class="title-2">Hunters game levels start schedule</h2>
+			</div>
+			<div class="divTable">
+				<div class="divTableBody">
+					<div class="divTableRow divTableHeader">
+						<div class="divTableCell">Start date</div>
+						<div class="divTableCell">Level</div>
+						<div class="divTableCell"> Value</div>
+						<div class="divTableCell">Time left</div>
+					</div>
+					<div class="divTableRow">
+						<div class="divTableCell">16.03.2022 23:00</div>
+						<div class="divTableCell">16</div>
+						<div class="divTableCell">8 BNB</div>
+						<div class="divTableCell">Available</div>
+					</div>
+					<div class="divTableRow">
+						<div class="divTableCell">17.03.2022 23:00</div>
+						<div class="divTableCell">15</div>
+						<div class="divTableCell">6.5 BNB</div>
+						<div class="divTableCell">Available</div>
+					</div>
+					<div class="divTableRow">
+						<div class="divTableCell">18.03.2022 23:00</div>
+						<div class="divTableCell">14</div>
+						<div class="divTableCell">4.4 BNB</div>
+						<div class="divTableCell">Available</div>
+					</div>
+					<div class="divTableRow">
+						<div class="divTableCell">19.03.2022 23:00</div>
+						<div class="divTableCell">13</div>
+						<div class="divTableCell">3.2 BNB</div>
+						<div class="divTableCell">Available</div>
+					</div>
+					<div class="divTableRow">
+						<div class="divTableCell">20.03.2022 23:00</div>
+						<div class="divTableCell">12</div>
+						<div class="divTableCell">2.2 BNB</div>
+						<div class="divTableCell">Available</div>
+					</div>
+					<div class="divTableRow">
+						<div class="divTableCell">21.03.2022 23:00</div>
+						<div class="divTableCell">11</div>
+						<div class="divTableCell">1.6 BNB</div>
+						<div class="divTableCell">Available</div>
+					</div>
+					<div class="divTableRow">
+						<div class="divTableCell">23.03.2022 23:00</div>
+						<div class="divTableCell">10</div>
+						<div class="divTableCell">1.1 BNB</div>
+						<div class="divTableCell">Available</div>
+					</div>
+					<div class="divTableRow">
+						<div class="divTableCell">24.03.2022 23:00</div>
+						<div class="divTableCell">9</div>
+						<div class="divTableCell">0.8 BNB</div>
+						<div class="divTableCell">Available</div>
+					</div>
+					<div class="divTableRow">
+						<div class="divTableCell">25.03.2022 23:00</div>
+						<div class="divTableCell">8</div>
+						<div class="divTableCell">0.55 BNB</div>
+						<div class="divTableCell">Available</div>
+					</div>
+					<div class="divTableRow">
+						<div class="divTableCell">27.03.2022 23:00</div>
+						<div class="divTableCell">7</div>
+						<div class="divTableCell">0.4 BNB</div>
+						<div class="divTableCell">Available</div>
+					</div>
+					<div class="divTableRow">
+						<div class="divTableCell">28.03.2022 23:00</div>
+						<div class="divTableCell">6</div>
+						<div class="divTableCell">0.28 BNB</div>
+						<div class="divTableCell">Available</div>
+					</div>
+					<div class="divTableRow">
+						<div class="divTableCell">30.03.2022 23:00</div>
+						<div class="divTableCell">5</div>
+						<div class="divTableCell">0.2 BNB</div>
+						<div class="divTableCell">Available</div>
+					</div>
+					<div class="divTableRow">
+						<div class="divTableCell">01.04.2022 23:00</div>
+						<div class="divTableCell">4</div>
+						<div class="divTableCell">0.14 BNB</div>
+						<div class="divTableCell">Available</div>
+					</div>
+					<div class="divTableRow">
+						<div class="divTableCell">02.04.2022 23:00</div>
+						<div class="divTableCell">3</div>
+						<div class="divTableCell">0.1 BNB</div>
+						<div class="divTableCell">Available</div>
+					</div>
+					<div class="divTableRow">
+						<div class="divTableCell">05.04.2022 23:00</div>
+						<div class="divTableCell">2</div>
+						<div class="divTableCell">0.07 BNB</div>
+						<div class="divTableCell">Available</div>
+					</div>
+					<div class="divTableRow endtime">
+						<div class="divTableCell">08.04.2022 23:00</div>
+						<div class="divTableCell">1</div>
+						<div class="divTableCell">0.05 BNB</div>
+						<div class="divTableCell">1 days</div>
+					</div>
 				</div>
 			</div>
-			<section class="preview-mode">
-				<div class="title-block">
-					<h2 class="title-2">Preview Mode</h2>
-					<div class="subtitle">Look up any Hunters game member account in preview mode. Enter ID or BNB address to preview.</div>
+		</section>
+		<section class="about">
+			<div class="title-block">
+				<h2 class="title-2">About</h2>
+				<div class="subtitle">Contract game created by DeFi Hunters DAO with passive yields in BNB directly to your
+					wallet.<br />All players are placed randomly in 16 levels with unlimited cycles.<br />Rewards are distributed
+					as follows:<br />- 74% of level value for each of your level cycle<br />- 13%-8%-5% of the level value from
+					partners down to 3 in-depth when they activate levels.</div>
+			</div>
+			<div class="short-table">
+				<div class="short-table-item">
+					<div class="short-table-title">Contracts</div>
+					<div class="short-table-info short-table-wallet">
+						<div class="about-wallet-number">0x4c978...8F8d2B</div>
+						<div class="about-wallet-link"><a class="copy" href="#!">
+								<svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<g clip-path="url(#clip0_2_306)">
+										<path
+											d="M20.2681 0.97876H10.1274C8.70586 0.97876 7.54932 2.13531 7.54932 3.55688V6.13501H9.26807V3.55688C9.26807 3.08303 9.65358 2.69751 10.1274 2.69751H20.2681C20.7419 2.69751 21.1274 3.08303 21.1274 3.55688V13.5256C21.1274 13.9995 20.7419 14.385 20.2681 14.385H17.8618V16.1038H20.2681C21.6896 16.1038 22.8462 14.9472 22.8462 13.5256V3.55688C22.8462 2.13531 21.6896 0.97876 20.2681 0.97876ZM13.5649 7.85376H3.42432C2.00274 7.85376 0.846191 9.01031 0.846191 10.4319V20.4006C0.846191 21.8222 2.00274 22.9788 3.42432 22.9788H13.5649C14.9865 22.9788 16.1431 21.8222 16.1431 20.4006V10.4319C16.1431 9.01031 14.9865 7.85376 13.5649 7.85376ZM14.4243 20.4006C14.4243 20.8745 14.0388 21.26 13.5649 21.26H3.42432C2.95046 21.26 2.56494 20.8745 2.56494 20.4006V10.4319C2.56494 9.95802 2.95046 9.57251 3.42432 9.57251H13.5649C14.0388 9.57251 14.4243 9.95802 14.4243 10.4319V20.4006Z"
+											fill="#3D8AFF"></path>
+									</g>
+									<defs>
+										<clipPath id="clip0_2_306">
+											<rect width="22" height="22" fill="white" transform="translate(0.846191 0.97876)"></rect>
+										</clipPath>
+									</defs>
+								</svg></a><a class="link" href="#!">
+								<svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<g clip-path="url(#clip0_2_311)">
+										<path
+											d="M6.18947 22.9788C4.78405 22.9788 3.45683 22.4219 2.43285 21.398C1.36065 20.3257 0.800599 18.9209 0.855771 17.4421C0.91279 15.9149 1.60274 14.4478 2.85106 13.1995L5.09867 10.9427C5.43356 10.6064 5.97768 10.6053 6.31399 10.9402C6.65026 11.2751 6.65142 11.8193 6.31648 12.1555L4.06768 14.4136C2.24533 16.2359 2.07337 18.6077 3.64826 20.1826C5.22319 21.7577 7.59502 21.5856 9.41603 19.7645L12.5049 16.6756C13.4412 15.7394 13.9575 14.6704 13.998 13.5842C14.0352 12.5886 13.6534 11.6381 12.9231 10.9078C12.6784 10.6631 12.4077 10.4555 12.1184 10.2907C11.706 10.0558 11.5621 9.53105 11.797 9.11868C12.0319 8.70626 12.5567 8.56241 12.969 8.79727C13.3917 9.03807 13.7852 9.33928 14.1385 9.69252C15.2107 10.7647 15.7707 12.1696 15.7156 13.6483C15.6586 15.1756 14.9686 16.6427 13.7203 17.891L10.6314 20.9799C9.38303 22.2282 7.91599 22.9181 6.38876 22.9752C6.32224 22.9775 6.25568 22.9788 6.18947 22.9788ZM11.9072 14.839C12.1421 14.4266 11.9982 13.9018 11.5858 13.6669C11.2965 13.5021 11.0257 13.2945 10.7811 13.0499C9.20617 11.4749 9.37813 9.10312 11.1992 7.28203L14.2881 4.19318C16.1093 2.37212 18.481 2.20012 20.0559 3.77501C21.6308 5.3499 21.4588 7.72172 19.6365 9.54407L17.3877 11.8021C17.0527 12.1384 17.0538 12.6825 17.3901 13.0174C17.7264 13.3524 18.2705 13.3512 18.6055 13.0149L20.8531 10.7581C22.1014 9.50982 22.7913 8.04274 22.8484 6.51555C22.9035 5.03678 22.3435 3.63188 21.2713 2.55968C20.1991 1.48744 18.7935 0.927475 17.3154 0.982561C15.7882 1.03958 14.3211 1.72953 13.0728 2.97785L9.9839 6.0667C8.73558 7.31502 8.04567 8.7821 7.98861 10.3093C7.93344 11.7881 8.49349 13.193 9.56569 14.2652C9.91893 14.6184 10.3124 14.9196 10.7352 15.1604C10.8694 15.2369 11.0155 15.2732 11.1597 15.2732C11.4585 15.2732 11.7488 15.1171 11.9072 14.839Z"
+											fill="#3D8AFF"></path>
+									</g>
+									<defs>
+										<clipPath id="clip0_2_311">
+											<rect width="22" height="22" fill="white" transform="translate(0.852051 0.97876)"></rect>
+										</clipPath>
+									</defs>
+								</svg></a></div>
+					</div>
 				</div>
-				<div class="inputblock">
-					<div class="inputblock-title">Enter ID or BNB wallet</div>
-					<form class="inputblock-wrapper" action="#!" id="preview-mode-form">
-						<div class="inputblock-input">
-							<input type="text" placeholder="example: 12345"/>
-							<div class="error-message" id="errorInpuId" data-dismiss="alert">Please enter ID or BNB wallet</div>
+				<div class="short-table-item">
+					<div class="short-table-block">
+						<div class="short-table-title">Members total</div>
+						<div class="short-table-info short-table-numbers">
+							<div class="about-count">71 009</div>
+							<div class="about-count-growth">+ 7 510</div>
 						</div>
-						<input class="btn" type="button" value="Preview"/>
-					</form>
+					</div>
 				</div>
-			</section>
-			<section class="levels">
-				<div class="title-block">
-					<h2 class="title-2">Hunters game levels start schedule</h2>
+				<div class="short-table-item">
+					<div class="short-table-block">
+						<div class="short-table-title">Transactions made</div>
+						<div class="short-table-info short-table-numbers">
+							<div class="about-count">380 578</div>
+							<div class="about-count-growth">+ 2 573</div>
+						</div>
+					</div>
 				</div>
-				<div class="divTable">
+				<div class="short-table-item">
+					<div class="short-table-block">
+						<div class="short-table-title">Turnover,BNB</div>
+						<div class="short-table-info short-table-numbers">
+							<div class="about-count">401 414.66</div>
+							<div class="about-count-growth">+ 28 648.04</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="activity">
+			<div class="title-block title-block-row">
+				<h2 class="title-2">Recent activity</h2>
+				<div class="tooltip-box"><img src="./img/icons/tooltip.svg" alt="hint" />
+					<div class="tooltip">Real-time events with links to blockchain transactions</div>
+				</div>
+			</div>
+			<div class="divTable">
+				<div class="divTableWrapper custom-scroll">
 					<div class="divTableBody">
-						<div class="divTableRow divTableHeader">
-							<div class="divTableCell">Start date</div>
-							<div class="divTableCell">Level</div>
-							<div class="divTableCell"> Value</div>
-							<div class="divTableCell">Time left</div>
-						</div>
 						<div class="divTableRow">
-							<div class="divTableCell">16.03.2022 23:00</div>
-							<div class="divTableCell">16</div>
-							<div class="divTableCell">8 BNB</div>
-							<div class="divTableCell">Available</div>
-						</div>
-						<div class="divTableRow">
-							<div class="divTableCell">17.03.2022 23:00</div>
-							<div class="divTableCell">15</div>
-							<div class="divTableCell">6.5 BNB</div>
-							<div class="divTableCell">Available</div>
-						</div>
-						<div class="divTableRow">
-							<div class="divTableCell">18.03.2022 23:00</div>
-							<div class="divTableCell">14</div>
-							<div class="divTableCell">4.4 BNB</div>
-							<div class="divTableCell">Available</div>
-						</div>
-						<div class="divTableRow">
-							<div class="divTableCell">19.03.2022 23:00</div>
-							<div class="divTableCell">13</div>
-							<div class="divTableCell">3.2 BNB</div>
-							<div class="divTableCell">Available</div>
-						</div>
-						<div class="divTableRow">
-							<div class="divTableCell">20.03.2022 23:00</div>
-							<div class="divTableCell">12</div>
-							<div class="divTableCell">2.2 BNB</div>
-							<div class="divTableCell">Available</div>
-						</div>
-						<div class="divTableRow">
-							<div class="divTableCell">21.03.2022 23:00</div>
-							<div class="divTableCell">11</div>
-							<div class="divTableCell">1.6 BNB</div>
-							<div class="divTableCell">Available</div>
-						</div>
-						<div class="divTableRow">
-							<div class="divTableCell">23.03.2022 23:00</div>
-							<div class="divTableCell">10</div>
-							<div class="divTableCell">1.1 BNB</div>
-							<div class="divTableCell">Available</div>
-						</div>
-						<div class="divTableRow">
-							<div class="divTableCell">24.03.2022 23:00</div>
-							<div class="divTableCell">9</div>
-							<div class="divTableCell">0.8 BNB</div>
-							<div class="divTableCell">Available</div>
-						</div>
-						<div class="divTableRow">
-							<div class="divTableCell">25.03.2022 23:00</div>
-							<div class="divTableCell">8</div>
-							<div class="divTableCell">0.55 BNB</div>
-							<div class="divTableCell">Available</div>
-						</div>
-						<div class="divTableRow">
-							<div class="divTableCell">27.03.2022 23:00</div>
-							<div class="divTableCell">7</div>
-							<div class="divTableCell">0.4 BNB</div>
-							<div class="divTableCell">Available</div>
-						</div>
-						<div class="divTableRow">
-							<div class="divTableCell">28.03.2022 23:00</div>
-							<div class="divTableCell">6</div>
-							<div class="divTableCell">0.28 BNB</div>
-							<div class="divTableCell">Available</div>
-						</div>
-						<div class="divTableRow">
-							<div class="divTableCell">30.03.2022 23:00</div>
-							<div class="divTableCell">5</div>
-							<div class="divTableCell">0.2 BNB</div>
-							<div class="divTableCell">Available</div>
-						</div>
-						<div class="divTableRow">
-							<div class="divTableCell">01.04.2022 23:00</div>
-							<div class="divTableCell">4</div>
-							<div class="divTableCell">0.14 BNB</div>
-							<div class="divTableCell">Available</div>
-						</div>
-						<div class="divTableRow">
-							<div class="divTableCell">02.04.2022 23:00</div>
-							<div class="divTableCell">3</div>
-							<div class="divTableCell">0.1 BNB</div>
-							<div class="divTableCell">Available</div>
-						</div>
-						<div class="divTableRow">
-							<div class="divTableCell">05.04.2022 23:00</div>
-							<div class="divTableCell">2</div>
-							<div class="divTableCell">0.07 BNB</div>
-							<div class="divTableCell">Available</div>
-						</div>
-						<div class="divTableRow endtime">
-							<div class="divTableCell">08.04.2022 23:00</div>
-							<div class="divTableCell">1</div>
-							<div class="divTableCell">0.05 BNB</div>
-							<div class="divTableCell">1 days</div>
-						</div>
-					</div>
-				</div>
-			</section>
-			<section class="about">
-				<div class="title-block">
-					<h2 class="title-2">About</h2>
-					<div class="subtitle">Contract game created by DeFi Hunters DAO with passive yields in BNB directly to your wallet.<br/>All players are placed randomly in 16 levels with unlimited cycles.<br/>Rewards are distributed as follows:<br/>- 74% of level value for each of your level cycle<br/>- 13%-8%-5% of the level value from partners down to 3 in-depth when they activate levels.</div>
-				</div>
-				<div class="short-table">
-					<div class="short-table-item">
-						<div class="short-table-title">Contracts</div>
-						<div class="short-table-info short-table-wallet">
-							<div class="about-wallet-number">0x4c978...8F8d2B</div>
-							<div class="about-wallet-link"><a class="copy" href="#!">
-									<svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
-										<g clip-path="url(#clip0_2_306)">
-											<path d="M20.2681 0.97876H10.1274C8.70586 0.97876 7.54932 2.13531 7.54932 3.55688V6.13501H9.26807V3.55688C9.26807 3.08303 9.65358 2.69751 10.1274 2.69751H20.2681C20.7419 2.69751 21.1274 3.08303 21.1274 3.55688V13.5256C21.1274 13.9995 20.7419 14.385 20.2681 14.385H17.8618V16.1038H20.2681C21.6896 16.1038 22.8462 14.9472 22.8462 13.5256V3.55688C22.8462 2.13531 21.6896 0.97876 20.2681 0.97876ZM13.5649 7.85376H3.42432C2.00274 7.85376 0.846191 9.01031 0.846191 10.4319V20.4006C0.846191 21.8222 2.00274 22.9788 3.42432 22.9788H13.5649C14.9865 22.9788 16.1431 21.8222 16.1431 20.4006V10.4319C16.1431 9.01031 14.9865 7.85376 13.5649 7.85376ZM14.4243 20.4006C14.4243 20.8745 14.0388 21.26 13.5649 21.26H3.42432C2.95046 21.26 2.56494 20.8745 2.56494 20.4006V10.4319C2.56494 9.95802 2.95046 9.57251 3.42432 9.57251H13.5649C14.0388 9.57251 14.4243 9.95802 14.4243 10.4319V20.4006Z" fill="#3D8AFF"></path>
-										</g>
-										<defs>
-											<clipPath id="clip0_2_306">
-												<rect width="22" height="22" fill="white" transform="translate(0.846191 0.97876)"></rect>
-											</clipPath>
-										</defs>
-									</svg></a><a class="link" href="#!">
-									<svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
-										<g clip-path="url(#clip0_2_311)">
-											<path d="M6.18947 22.9788C4.78405 22.9788 3.45683 22.4219 2.43285 21.398C1.36065 20.3257 0.800599 18.9209 0.855771 17.4421C0.91279 15.9149 1.60274 14.4478 2.85106 13.1995L5.09867 10.9427C5.43356 10.6064 5.97768 10.6053 6.31399 10.9402C6.65026 11.2751 6.65142 11.8193 6.31648 12.1555L4.06768 14.4136C2.24533 16.2359 2.07337 18.6077 3.64826 20.1826C5.22319 21.7577 7.59502 21.5856 9.41603 19.7645L12.5049 16.6756C13.4412 15.7394 13.9575 14.6704 13.998 13.5842C14.0352 12.5886 13.6534 11.6381 12.9231 10.9078C12.6784 10.6631 12.4077 10.4555 12.1184 10.2907C11.706 10.0558 11.5621 9.53105 11.797 9.11868C12.0319 8.70626 12.5567 8.56241 12.969 8.79727C13.3917 9.03807 13.7852 9.33928 14.1385 9.69252C15.2107 10.7647 15.7707 12.1696 15.7156 13.6483C15.6586 15.1756 14.9686 16.6427 13.7203 17.891L10.6314 20.9799C9.38303 22.2282 7.91599 22.9181 6.38876 22.9752C6.32224 22.9775 6.25568 22.9788 6.18947 22.9788ZM11.9072 14.839C12.1421 14.4266 11.9982 13.9018 11.5858 13.6669C11.2965 13.5021 11.0257 13.2945 10.7811 13.0499C9.20617 11.4749 9.37813 9.10312 11.1992 7.28203L14.2881 4.19318C16.1093 2.37212 18.481 2.20012 20.0559 3.77501C21.6308 5.3499 21.4588 7.72172 19.6365 9.54407L17.3877 11.8021C17.0527 12.1384 17.0538 12.6825 17.3901 13.0174C17.7264 13.3524 18.2705 13.3512 18.6055 13.0149L20.8531 10.7581C22.1014 9.50982 22.7913 8.04274 22.8484 6.51555C22.9035 5.03678 22.3435 3.63188 21.2713 2.55968C20.1991 1.48744 18.7935 0.927475 17.3154 0.982561C15.7882 1.03958 14.3211 1.72953 13.0728 2.97785L9.9839 6.0667C8.73558 7.31502 8.04567 8.7821 7.98861 10.3093C7.93344 11.7881 8.49349 13.193 9.56569 14.2652C9.91893 14.6184 10.3124 14.9196 10.7352 15.1604C10.8694 15.2369 11.0155 15.2732 11.1597 15.2732C11.4585 15.2732 11.7488 15.1171 11.9072 14.839Z" fill="#3D8AFF"></path>
-										</g>
-										<defs>
-											<clipPath id="clip0_2_311">
-												<rect width="22" height="22" fill="white" transform="translate(0.852051 0.97876)"></rect>
-											</clipPath>
-										</defs>
-									</svg></a></div>
-						</div>
-					</div>
-					<div class="short-table-item">
-						<div class="short-table-block">
-							<div class="short-table-title">Members total</div>
-							<div class="short-table-info short-table-numbers">
-								<div class="about-count">71 009</div>
-								<div class="about-count-growth">+ 7 510</div>
+							<div class="activity-icon"><img src="./img/icons/download_pink.svg" alt="withdrawal" /></div>
+							<div class="activity-wrapper"><a class="activity-id" href="./account.html">ID 362965</a>
+								<div class="activity-info"><span>activated </span>Level 9 <span>in </span><a href="#!">Express</a></div>
+								<div class="activity-time"><a class="activity-time-icon" href="#!"></a><span>~ 1 hour</span></div>
 							</div>
 						</div>
-					</div>
-					<div class="short-table-item">
-						<div class="short-table-block">
-							<div class="short-table-title">Transactions made</div>
-							<div class="short-table-info short-table-numbers">
-								<div class="about-count">380 578</div>
-								<div class="about-count-growth">+ 2 573</div>
-							</div>
-						</div>
-					</div>
-					<div class="short-table-item">
-						<div class="short-table-block">
-							<div class="short-table-title">Turnover,BNB</div>
-							<div class="short-table-info short-table-numbers">
-								<div class="about-count">401 414.66</div>
-								<div class="about-count-growth">+ 28 648.04</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-			<section class="activity">
-				<div class="title-block title-block-row">
-					<h2 class="title-2">Recent activity</h2>
-					<div class="tooltip-box"><img src="./img/icons/tooltip.svg" alt="hint"/>
-						<div class="tooltip">Real-time events with links to blockchain transactions</div>
-					</div>
-				</div>
-				<div class="divTable">
-					<div class="divTableWrapper custom-scroll">
-						<div class="divTableBody">
-							<div class="divTableRow">
-								<div class="activity-icon"><img src="./img/icons/download_pink.svg" alt="withdrawal"/></div>
-								<div class="activity-wrapper"><a class="activity-id" href="./account.html">ID 362965</a>
-									<div class="activity-info"><span>activated </span>Level 9 <span>in </span><a href="#!">Express</a></div>
-									<div class="activity-time"><a class="activity-time-icon" href="#!"></a><span>~ 1 hour</span></div>
+						<div class="divTableRow">
+							<div class="activity-icon"><a href="#!"><img src="./img/icons/wallet-pink.svg" alt="wallet" /></a></div>
+							<div class="activity-wrapper"><a class="activity-id" href="./account.html">ID 362963</a>
+								<div class="activity-info">+0.592 BNB <span>on </span>Level 9 <span>in </span><a href="">Express</a>
 								</div>
-							</div>
-							<div class="divTableRow">
-								<div class="activity-icon"><a href="#!"><img src="./img/icons/wallet-pink.svg" alt="wallet"/></a></div>
-								<div class="activity-wrapper"><a class="activity-id" href="./account.html">ID 362963</a>
-									<div class="activity-info">+0.592 BNB <span>on </span>Level 9 <span>in </span><a href="">Express</a></div>
-									<div class="activity-time"><a class="activity-time-icon" href="#!"></a><span>~ 1 hour</span></div>
-								</div>
-							</div>
-							<div class="divTableRow">
-								<div class="activity-icon"><img src="./img/icons/account-pink.svg" alt="account"/></div>
-								<div class="activity-wrapper"><a class="activity-id" href="./account.html">ID 362963</a>
-									<div class="activity-info"><span>+ partner bonus </span>0.04 BNB <span>on </span>Level 9 <span>in </span><a href="">Express</a></div>
-									<div class="activity-time"><a class="activity-time-icon" href="#!"></a><span>~ 1 hour</span></div>
-								</div>
-							</div>
-							<div class="divTableRow">
-								<div class="activity-icon"><img src="./img/icons/account-pink.svg" alt="account"/></div>
-								<div class="activity-wrapper"><a class="activity-id" href="./account.html">ID 362963</a>
-									<div class="activity-info"><span>+ partner bonus </span>0.0064 BNB <span>on </span>Level 9 <span>in </span><a href="">Express</a></div>
-									<div class="activity-time"><a class="activity-time-icon" href="#!"></a><span>~ 1 hour</span></div>
-								</div>
-							</div>
-							<div class="divTableRow">
-								<div class="activity-icon"><img src="./img/icons/account-pink.svg" alt="account"/></div>
-								<div class="activity-wrapper"><a class="activity-id" href="./account.html">ID 362963</a>
-									<div class="activity-info"><span>+ partner bonus </span>0.104 BNB <span>on </span>Level 9 <span>in </span><a href="">Express</a></div>
-									<div class="activity-time"><a class="activity-time-icon" href="#!"></a><span>~ 1 hour</span></div>
-								</div>
-							</div>
-							<div class="divTableRow">
-								<div class="activity-icon"><img src="./img/icons/download_pink.svg" alt="withdrawal"/></div>
-								<div class="activity-wrapper"><a class="activity-id" href="./account.html">ID 362965</a>
-									<div class="activity-info"><span>activated </span>Level 12<span>in </span><a href="">Express</a></div>
-									<div class="activity-time"><a class="activity-time-icon" href="#!"></a><span>~ 1 hour</span></div>
-								</div>
-							</div>
-							<div class="divTableRow">
-								<div class="activity-icon"><img src="./img/icons/wallet-pink.svg" alt="wallet"/></div>
-								<div class="activity-wrapper"><a class="activity-id" href="./account.html">ID 362963</a>
-									<div class="activity-info">+1.628 BNB <span>on </span>Level 12 <span>in </span><a href="">Express</a></div>
-									<div class="activity-time"><a class="activity-time-icon" href="#!"></a><span>~ 1 hour</span></div>
-								</div>
-							</div>
-							<div class="divTableRow">
-								<div class="activity-icon"><img src="./img/icons/account-pink.svg" alt="account"/></div>
-								<div class="activity-wrapper"><a class="activity-id" href="./account.html">ID 362963</a>
-									<div class="activity-info"><span>+ partner bonus </span>0.11 BNB <span>on </span>Level 9 <span>in </span><a href="">Express</a></div>
-									<div class="activity-time"><a class="activity-time-icon" href="#!"></a><span>~ 1 hour</span></div>
-								</div>
-							</div>
-							<div class="divTableRow">
-								<div class="activity-icon"><img src="./img/icons/wallet-pink.svg" alt="wallet"/></div>
-								<div class="activity-wrapper"><a class="activity-id" href="./account.html">ID 362963</a>
-									<div class="activity-info">+1.628 BNB <span>on </span>Level 12 <span>in </span><a href="">Express</a></div>
-									<div class="activity-time"><a class="activity-time-icon" href="#!"></a><span>~ 1 hour</span></div>
-								</div>
-							</div>
-							<div class="divTableRow">
-								<div class="activity-icon"><img src="./img/icons/account-pink.svg" alt="account"/></div>
-								<div class="activity-wrapper"><a class="activity-id" href="./account.html">ID 362963</a>
-									<div class="activity-info"><span>+ partner bonus </span>0.11 BNB <span>on </span>Level 9 <span>in </span><a href="">Express</a></div>
-									<div class="activity-time"><a class="activity-time-icon" href="#!"></a><span>~ 1 hour</span></div>
-								</div>
-							</div>
-							<div class="divTableRow">
-								<div class="activity-icon"><img src="./img/icons/download_pink.svg" alt="withdrawal"/></div>
-								<div class="activity-wrapper"><a class="activity-id" href="./account.html">ID 362965</a>
-									<div class="activity-info"><span>activated </span>Level 9 <span>in </span><a href="">Express</a></div>
-									<div class="activity-time"><a class="activity-time-icon" href="#!"></a><span>~ 1 hour</span></div>
-								</div>
-							</div>
-							<div class="divTableRow">
-								<div class="activity-icon"><img src="./img/icons/wallet-pink.svg" alt="wallet"/></div>
-								<div class="activity-wrapper"><a class="activity-id" href="./account.html">ID 362963</a>
-									<div class="activity-info">+0.592 BNB <span>on </span>Level 9 <span>in </span><a href="">Express</a></div>
-									<div class="activity-time"><a class="activity-time-icon" href="#!"></a><span>~ 1 hour</span></div>
-								</div>
+								<div class="activity-time"><a class="activity-time-icon" href="#!"></a><span>~ 1 hour</span></div>
 							</div>
 						</div>
-					</div>
-				</div>
-			</section>
-			<footer class="footer">
-				<div class="footer-wrapper">
-					<div class="copyright">© 2022 Defi Hunters Dao. All Rights Reserved</div><a class="btn btn-square" href="#!" data-bs-toggle="modal" data-bs-target="#disclaimerModal">Disclaimer</a>
-				</div>
-			</footer>
-		</div>
-		<div class="modal fade" id="disclaimerModal" tabindex="-1" role="dialog" aria-hidden="true">
-			<div class="modal-dialog modal-dialog-centered" role="document">
-				<div class="modal-content">
-					<div class="modal-body">
-						<h2>Disclaimer</h2>
-						<p>Always do your own research! You take all the responsibility for your actions. By interacting with the smart contract, you agree to the game's rules and understand that all blockchain transactions are irrevocable.</p>
-						<p>The <a href="#!">Hunters Game</a>sticks to decentralization, transparency of each transaction, no fees, and no fund accumulation.</p><a class="btn btn-modal" href="#!">I agree</a>
-					</div>
-				</div>
-			</div>
-			<div class="modal-close" data-bs-dismiss="modal"><img src="./img/icons/close-white.svg" alt="close"/></div>
-		</div>
-		<div class="modal fade" id="walletModal" tabindex="-1" role="dialog" aria-hidden="true">
-			<div class="modal-dialog modal-dialog-centered" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h2>Wallet</h2><a href="#!">Disconnect</a>
-					</div>
-					<div class="modal-body">
-						<div class="modal-body-bg">
-							<div class="wallet-number-wrapper">
-								<div class="wallet-number"><img src="./img/icons/wallet.svg" alt="wallet"/><span>0хС60В...9се8</span></div>
-								<div class="btn btn-small">Copy</div>
+						<div class="divTableRow">
+							<div class="activity-icon"><img src="./img/icons/account-pink.svg" alt="account" /></div>
+							<div class="activity-wrapper"><a class="activity-id" href="./account.html">ID 362963</a>
+								<div class="activity-info"><span>+ partner bonus </span>0.04 BNB <span>on </span>Level 9 <span>in
+									</span><a href="">Express</a></div>
+								<div class="activity-time"><a class="activity-time-icon" href="#!"></a><span>~ 1 hour</span></div>
 							</div>
-							<div class="smart-chain"><img src="./img/icons/smart-chain.svg" alt="Smart Chain"/><span>Smart Chain</span></div>
-							<div class="ballance"><span>Current  wallet balance</span>
-								<div class="ballance-block"><img src="./img/icons/bnb.svg" alt="BNB"/><span>0.019 BNB </span></div>
+						</div>
+						<div class="divTableRow">
+							<div class="activity-icon"><img src="./img/icons/account-pink.svg" alt="account" /></div>
+							<div class="activity-wrapper"><a class="activity-id" href="./account.html">ID 362963</a>
+								<div class="activity-info"><span>+ partner bonus </span>0.0064 BNB <span>on </span>Level 9 <span>in
+									</span><a href="">Express</a></div>
+								<div class="activity-time"><a class="activity-time-icon" href="#!"></a><span>~ 1 hour</span></div>
+							</div>
+						</div>
+						<div class="divTableRow">
+							<div class="activity-icon"><img src="./img/icons/account-pink.svg" alt="account" /></div>
+							<div class="activity-wrapper"><a class="activity-id" href="./account.html">ID 362963</a>
+								<div class="activity-info"><span>+ partner bonus </span>0.104 BNB <span>on </span>Level 9 <span>in
+									</span><a href="">Express</a></div>
+								<div class="activity-time"><a class="activity-time-icon" href="#!"></a><span>~ 1 hour</span></div>
+							</div>
+						</div>
+						<div class="divTableRow">
+							<div class="activity-icon"><img src="./img/icons/download_pink.svg" alt="withdrawal" /></div>
+							<div class="activity-wrapper"><a class="activity-id" href="./account.html">ID 362965</a>
+								<div class="activity-info"><span>activated </span>Level 12<span>in </span><a href="">Express</a></div>
+								<div class="activity-time"><a class="activity-time-icon" href="#!"></a><span>~ 1 hour</span></div>
+							</div>
+						</div>
+						<div class="divTableRow">
+							<div class="activity-icon"><img src="./img/icons/wallet-pink.svg" alt="wallet" /></div>
+							<div class="activity-wrapper"><a class="activity-id" href="./account.html">ID 362963</a>
+								<div class="activity-info">+1.628 BNB <span>on </span>Level 12 <span>in </span><a href="">Express</a>
+								</div>
+								<div class="activity-time"><a class="activity-time-icon" href="#!"></a><span>~ 1 hour</span></div>
+							</div>
+						</div>
+						<div class="divTableRow">
+							<div class="activity-icon"><img src="./img/icons/account-pink.svg" alt="account" /></div>
+							<div class="activity-wrapper"><a class="activity-id" href="./account.html">ID 362963</a>
+								<div class="activity-info"><span>+ partner bonus </span>0.11 BNB <span>on </span>Level 9 <span>in
+									</span><a href="">Express</a></div>
+								<div class="activity-time"><a class="activity-time-icon" href="#!"></a><span>~ 1 hour</span></div>
+							</div>
+						</div>
+						<div class="divTableRow">
+							<div class="activity-icon"><img src="./img/icons/wallet-pink.svg" alt="wallet" /></div>
+							<div class="activity-wrapper"><a class="activity-id" href="./account.html">ID 362963</a>
+								<div class="activity-info">+1.628 BNB <span>on </span>Level 12 <span>in </span><a href="">Express</a>
+								</div>
+								<div class="activity-time"><a class="activity-time-icon" href="#!"></a><span>~ 1 hour</span></div>
+							</div>
+						</div>
+						<div class="divTableRow">
+							<div class="activity-icon"><img src="./img/icons/account-pink.svg" alt="account" /></div>
+							<div class="activity-wrapper"><a class="activity-id" href="./account.html">ID 362963</a>
+								<div class="activity-info"><span>+ partner bonus </span>0.11 BNB <span>on </span>Level 9 <span>in
+									</span><a href="">Express</a></div>
+								<div class="activity-time"><a class="activity-time-icon" href="#!"></a><span>~ 1 hour</span></div>
+							</div>
+						</div>
+						<div class="divTableRow">
+							<div class="activity-icon"><img src="./img/icons/download_pink.svg" alt="withdrawal" /></div>
+							<div class="activity-wrapper"><a class="activity-id" href="./account.html">ID 362965</a>
+								<div class="activity-info"><span>activated </span>Level 9 <span>in </span><a href="">Express</a></div>
+								<div class="activity-time"><a class="activity-time-icon" href="#!"></a><span>~ 1 hour</span></div>
+							</div>
+						</div>
+						<div class="divTableRow">
+							<div class="activity-icon"><img src="./img/icons/wallet-pink.svg" alt="wallet" /></div>
+							<div class="activity-wrapper"><a class="activity-id" href="./account.html">ID 362963</a>
+								<div class="activity-info">+0.592 BNB <span>on </span>Level 9 <span>in </span><a href="">Express</a>
+								</div>
+								<div class="activity-time"><a class="activity-time-icon" href="#!"></a><span>~ 1 hour</span></div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="modal-close" data-bs-dismiss="modal"><img src="./img/icons/close-white.svg" alt="close"/></div>
-		</div>
-		<div class="modal fade" id="chooseCoinModal" tabindex="-1" role="dialog" aria-hidden="true">
-			<div class="modal-dialog modal-dialog-centered" role="document">
-				<div class="modal-content modal-content-choose-coins">
-					<div class="modal-body">
-						<div class="choose-coin-wrapper"><a class="choose-coin" href="index-user.html">
-								<div class="choose-coin-img"><img src="./img/metamask.svg" alt="MetaMask" loading="lazy"/></div>
-								<div class="choose-coin-title">MetaMask</div>
-								<div class="choose-coin-text">Connect to your MetaMask Wallet</div></a><a class="choose-coin" href="index-user.html">
-								<div class="choose-coin-img"><img src="./img/walletconnect.svg" alt="MetaMask" loading="lazy"/></div>
-								<div class="choose-coin-title">WalletConnect</div>
-								<div class="choose-coin-text">Scan with WalletConnect to connect</div></a></div>
-					</div>
+		</section>
+		<footer class="footer">
+			<div class="footer-wrapper">
+				<div class="copyright">© 2022 Defi Hunters Dao. All Rights Reserved</div><a class="btn btn-square" href="#!"
+					data-bs-toggle="modal" data-bs-target="#disclaimerModal">Disclaimer</a>
+			</div>
+		</footer>
+	</div>
+	<div class="modal fade" id="disclaimerModal" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-body">
+					<h2>Disclaimer</h2>
+					<p>Always do your own research! You take all the responsibility for your actions. By interacting with the
+						smart contract, you agree to the game's rules and understand that all blockchain transactions are
+						irrevocable.</p>
+					<p>The <a href="#!">Hunters Game</a>sticks to decentralization, transparency of each transaction, no fees, and
+						no fund accumulation.</p><a class="btn btn-modal" href="#!">I agree</a>
 				</div>
 			</div>
-			<div class="modal-close" data-bs-dismiss="modal"><img src="./img/icons/close-white.svg" alt="close"/></div>
 		</div>
-		<div class="modal fade" id="registrationModal" tabindex="-1" role="dialog" aria-hidden="true">
-			<div class="modal-dialog modal-dialog-centered" role="document">
-				<div class="modal-content">
-					<div class="modal-header modal-header-col">
-						<h2>Fast Registration<br/>in Express Game</h2>
-						<div class="subtitle">Activate Express Game in one transaction with BNB</div>
-					</div>
-					<div class="modal-body">
-						<form action="#!"> 
-							<p>Your upline address and ID</p><span>0x14DcBeA2BD7abF90FEe83F09b51453e8BeEE207F</span>
-							<div class="modal-input-group">
-								<input type="text" placeholder="1"/><a class="btn btn-dark" href="#!">Approve upline</a>
+		<div class="modal-close" data-bs-dismiss="modal"><img src="./img/icons/close-white.svg" alt="close" /></div>
+	</div>
+	<div class="modal fade" id="walletModal" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h2>Wallet</h2><a href="#!">Disconnect</a>
+				</div>
+				<div class="modal-body">
+					<div class="modal-body-bg">
+						<div class="wallet-number-wrapper">
+							<div class="wallet-number"><img src="./img/icons/wallet.svg" alt="wallet" /><span>0хС60В...9се8</span>
 							</div>
-							<div class="select-title">Choose game level</div>
-							<div class="select"></div>
-						</form>
-						<div class="modal-btn-block"><a class="btn btn-border-green" href="#!">Network check</a><a class="btn btn-border-red" href="#!">8 BNB to open this level</a></div><a class="btn btn-long" href="#!">Check again (8.03001 BNB)</a>
+							<div class="btn btn-small">Copy</div>
+						</div>
+						<div class="smart-chain"><img src="./img/icons/smart-chain.svg" alt="Smart Chain" /><span>Smart Chain</span>
+						</div>
+						<div class="ballance"><span>Current wallet balance</span>
+							<div class="ballance-block"><img src="./img/icons/bnb.svg" alt="BNB" /><span>0.019 BNB </span></div>
+						</div>
 					</div>
 				</div>
 			</div>
-			<div class="modal-close" data-bs-dismiss="modal"><img src="./img/icons/close-white.svg" alt="close"/></div>
 		</div>
-		<!--=============== мои скрипты ===================-->
-		<script src="libs/scrollbar/perfect-scrollbar.js"></script>
-		<script src="libs/bootstrap/js/bootstrap.min.js"></script>
-		<script src="js/select.js"></script>
-		<script src="js/main.js"></script>
-	</body>
+		<div class="modal-close" data-bs-dismiss="modal"><img src="./img/icons/close-white.svg" alt="close" /></div>
+	</div>
+	<div class="modal fade" id="chooseCoinModal" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content modal-content-choose-coins">
+				<div class="modal-body">
+					<div class="choose-coin-wrapper"><a class="choose-coin" href="index-user.html">
+							<div class="choose-coin-img"><img src="./img/metamask.svg" alt="MetaMask" loading="lazy" /></div>
+							<div class="choose-coin-title">MetaMask</div>
+							<div class="choose-coin-text">Connect to your MetaMask Wallet</div>
+						</a><a class="choose-coin" href="index-user.html">
+							<div class="choose-coin-img"><img src="./img/walletconnect.svg" alt="MetaMask" loading="lazy" /></div>
+							<div class="choose-coin-title">WalletConnect</div>
+							<div class="choose-coin-text">Scan with WalletConnect to connect</div>
+						</a></div>
+				</div>
+			</div>
+		</div>
+		<div class="modal-close" data-bs-dismiss="modal"><img src="./img/icons/close-white.svg" alt="close" /></div>
+	</div>
+	<div class="modal fade" id="registrationModal" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header modal-header-col">
+					<h2>Fast Registration<br />in Express Game</h2>
+					<div class="subtitle">Activate Express Game in one transaction with BNB</div>
+				</div>
+				<div class="modal-body">
+					<form action="#!">
+						<p>Your upline address and ID</p><span>0x14DcBeA2BD7abF90FEe83F09b51453e8BeEE207F</span>
+						<div class="modal-input-group">
+							<input type="text" placeholder="1" /><a class="btn btn-dark" href="#!">Approve upline</a>
+						</div>
+						<div class="select-title">Choose game level</div>
+						<div class="select"></div>
+					</form>
+					<div class="modal-btn-block"><a class="btn btn-border-green" href="#!">Network check</a><a
+							class="btn btn-border-red" href="#!">8 BNB to open this level</a></div><a class="btn btn-long"
+						href="#!">Check again (8.03001 BNB)</a>
+				</div>
+			</div>
+		</div>
+		<div class="modal-close" data-bs-dismiss="modal"><img src="./img/icons/close-white.svg" alt="close" /></div>
+	</div>
+
+	<!--=============== мои скрипты ===================-->
+	<script src="libs/scrollbar/perfect-scrollbar.js"></script>
+	<script src="libs/bootstrap/js/bootstrap.min.js"></script>
+	<script src="js/select.js"></script>
+	<script src="js/main.js"></script>
+
+	<script type="text/javascript" src="/js-web3/web3.js"></script>
+	<script type="text/javascript" src="/js-web3/web3modal.js"></script>
+	<script type="text/javascript" src="/js-web3/evm-chains.js"></script>
+
+	<script type="text/javascript" src="/js-web3/wallet-connect.js"></script>
+	<script type="text/javascript" src="/js-web3/ethers-5.0.umd.min.js"></script>
+	<script type="text/javascript" src="/js-web3/bignumber.min.js"></script>
+
+	<script src="js2/"></script>
+
+</body>
+
 </html>

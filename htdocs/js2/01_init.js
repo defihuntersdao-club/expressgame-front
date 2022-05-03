@@ -1,0 +1,3 @@
+var glob = {
+  debug: true,
+}
