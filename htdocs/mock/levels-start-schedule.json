@@ -1,0 +1,114 @@
+[
+  {
+    "start_date": 1651814437048,
+    "level": 16,
+    "value": 8,
+    "currency": "BNB",
+    "time_left": "Time left"
+  },
+  {
+    "start_date": 1651814437048,
+    "level": 15,
+    "value": 6.5,
+    "currency": "BNB",
+    "time_left": "Available"
+  },
+  {
+    "start_date": 1651814437048,
+    "level": 14,
+    "value": 4.4,
+    "currency": "BNB",
+    "time_left": "Available"
+  },
+  {
+    "start_date": 1651814437048,
+    "level": 13,
+    "value": 3.2,
+    "currency": "BNB",
+    "time_left": "Available"
+  },
+  {
+    "start_date": 1651814437048,
+    "level": 12,
+    "value": 2.2,
+    "currency": "BNB",
+    "time_left": "Available"
+  },
+  {
+    "start_date": 1651814437048,
+    "level": 11,
+    "value": 1.6,
+    "currency": "BNB",
+    "time_left": "Available"
+  },
+  {
+    "start_date": 1651814437048,
+    "level": 10,
+    "value": 1.1,
+    "currency": "BNB",
+    "time_left": "Available"
+  },
+  {
+    "start_date": 1651814437048,
+    "level": 9,
+    "value": 0.8,
+    "currency": "BNB",
+    "time_left": "Available"
+  },
+  {
+    "start_date": 1651814437048,
+    "level": 8,
+    "value": 0.55,
+    "currency": "BNB",
+    "time_left": "Available"
+  },
+  {
+    "start_date": 1651814437048,
+    "level": 7,
+    "value": 0.4,
+    "currency": "BNB",
+    "time_left": "Available"
+  },
+  {
+    "start_date": 1651814437048,
+    "level": 6,
+    "value": 0.28,
+    "currency": "BNB",
+    "time_left": "Available"
+  },
+  {
+    "start_date": 1651814437048,
+    "level": 5,
+    "value": 0.2,
+    "currency": "BNB",
+    "time_left": "Available"
+  },
+  {
+    "start_date": 1651814437048,
+    "level": 4,
+    "value": 0.14,
+    "currency": "BNB",
+    "time_left": "Available"
+  },
+  {
+    "start_date": 1651814437048,
+    "level": 3,
+    "value": 0.1,
+    "currency": "BNB",
+    "time_left": "Available"
+  },
+  {
+    "start_date": 1651814437048,
+    "level": 2,
+    "value": 0.07,
+    "currency": "BNB",
+    "time_left": "Available"
+  },
+  {
+    "start_date": 1651814437048,
+    "level": 1,
+    "value": 0.05,
+    "currency": "BNB",
+    "time_left": "1 days"
+  }
+]

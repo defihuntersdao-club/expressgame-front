@@ -7,8 +7,9 @@ const initialState = {
   web3: null,
   icon: null,
   login: false,
+  home: {}
 }
-
+// TODO must be Class with private and public methods
 var __store_express = {
   state: initialState,
   reducers: {
@@ -28,5 +29,8 @@ var __store_express = {
       __store_express.state.balance = payload.balance
       __store_express.state.login = true
     },
+    setHomeLevelsSchedule: (payload) => {
+      __store_express.state.home.levelsShedule = payload
+    }
   }
 }
