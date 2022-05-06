@@ -8,6 +8,13 @@ function login_set(addr) {
 // =========== z_wallet_connect =========
 "use strict";
 
+const convert = (amount, chainId) => {
+  switch (chainId) {
+    default:
+      return amount * 10 ** -18;
+  }
+}
+
 var chain_name = '';
 const btn_class = "btn-success";
 var chainId = 0;
@@ -86,8 +93,6 @@ function init() {
     providerOptions, // required
     disableInjectedProvider: false, // optional. For MetaMask / Brave / Opera.
   });
-
-  console.log("Web3Modal instance is", web3Modal);
 }
 
 
@@ -103,6 +108,8 @@ async function fetchAccountData() {
   const web3 = new Web3(provider);
   chainId = await web3.eth.getChainId();
 
+  let icon;
+
   var this_val = '';
   var this_err = "ok";
   var network_name = "";
@@ -110,26 +117,27 @@ async function fetchAccountData() {
   switch (chainId + '') {
     case "80001":
     case "137":
-      this_val = 'matic';
+      this_val = 'MATIC';
       network_name = "Polygon";
+      icon = '/images/polygon.svg';
 
       network_txt += "<img src=/images/polygon.svg>";
       network_txt += "<span>" + network_name + "</span>";
       break;
     case "56":
     case "97":
-      this_val = 'bsc';
+      this_val = 'BNB';
       network_name = "BSC";
-
+      icon = '/images/bsc.svg';
 
       network_txt += "<img src='/images/bsc.svg'>";
       network_txt += "<span>" + network_name + "</span>";
       break;
     case "1":
     case "3":
-      this_val = 'eth';
+      this_val = 'ETH';
       network_name = "Ethereum";
-
+      icon = '/images/eth.svg';
 
       network_txt += "<img src='/images/eth.svg'>";
       network_txt += "<span>" + network_name + "</span>";
@@ -148,36 +156,18 @@ async function fetchAccountData() {
   console.log("Got accounts", accounts);
   selectedAccount = accounts[0];
 
-  __store_express.reducers.wallet(accounts[0]);
+  const getBalance = async () => web3.eth.getBalance(accounts[0]);
+  const balance = await getBalance();
 
-  //  document.querySelector("#selected-account").textContent = selectedAccount;
-  var t = ''
-  var t2 = ''
-  t = selectedAccount.substring(0, 10);
-  t += '...';
-  t += selectedAccount.substring(34);
-  t2 = t;
-
-  t = selectedAccount.substring(0, 6);
-  t += '...';
-  t += selectedAccount.substring(37);
-
-  // Go through all accounts and get their ETH balance
-  const rowResolvers = accounts.map(async (address) => {
-    const balance = await web3.eth.getBalance(address);
-    // ethBalance is a BigNumber instance
-    // https://github.com/indutny/bn.js/
-    const ethBalance = web3.utils.fromWei(balance, "ether");
-    const humanFriendlyBalance = parseFloat(ethBalance).toFixed(4);
-
+  __store_express.reducers.wallet({
+    account: accounts[0],
+    networkName: network_name,
+    currencySymbol: this_val,
+    chainId,
+    web3,
+    icon,
+    balance: convert(balance, chainId),
   });
-
-  // Because rendering account does its own RPC commucation
-  // with Ethereum node, we do not want to display any results
-  // until data for all accounts is loaded
-  await Promise.all(rowResolvers);
-
-  // Display fully loaded UI for wallet data
 }
 
 async function fetchAccountDataToStore() {
@@ -231,7 +221,7 @@ async function onConnect() {
 
   // Subscribe to accounts change
   provider.on("accountsChanged", (accounts) => {
-    __store_express.reducers.wallet(accounts[0]);
+    __store_express.reducers.account(accounts[0]);
     fetchAccountData();
   });
 

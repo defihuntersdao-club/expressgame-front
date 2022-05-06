@@ -5,15 +5,20 @@ function compare(a, b) {
 }
 
 (function listenerWallet() {
-  let cached = null;
+  let cachedAccount = null;
+  let cachedChainId = null;
 
   const listenerWalletId = setInterval(() => {
-    if (__store_express.state.account !== null && !compare(cached, __store_express.state.account)) {
-      console.log('__render_html', __render_html)
+    if (
+      (__store_express.state.account !== null && !compare(cachedAccount, __store_express.state.account)) ||
+      (__store_express.state.chainId !== null && !compare(cachedChainId, __store_express.state.chainId))
+    ) {
       // Run func rerender
       __render_html.renderHeaderUser(__store_express.state);
+      __render_html.renderBannerBtnBlock(__store_express.state);
 
-      cached = __store_express.state.account;
+      cachedAccount = __store_express.state.account;
+      cachedChainId = __store_express.state.chainId;
     }
   }, 1000)
 
