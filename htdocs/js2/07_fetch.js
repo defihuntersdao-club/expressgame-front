@@ -14,7 +14,7 @@ let xhr = new XMLHttpRequest();
       } else {
         // success
         let response = xhr.response;
-        __store_express.reducers.setHomeLevelsSchedule(JSON.parse(response));
+        __store_express.set.setHomeLevelsSchedule(JSON.parse(response));
       }
     };
 

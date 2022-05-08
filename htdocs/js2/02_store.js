@@ -1,3 +1,5 @@
+"use strict";
+
 const initialState = {
   account: null,
   chainId: null,
@@ -9,28 +11,34 @@ const initialState = {
   login: false,
   home: {}
 }
-// TODO must be Class with private and public methods
-var __store_express = {
-  state: initialState,
-  reducers: {
+
+function Store() {
+
+  var state = initialState
+
+  this.get = () => state
+
+  this.set = {
     account: (payload) => {
-      __store_express.state.account = payload
+      state.account = payload
     },
     chainId: (payload) => {
-      __store_express.state.chainId = payload
+      state.chainId = payload
     },
     wallet: (payload) => {
-      __store_express.state.account = payload.account
-      __store_express.state.networkName = payload.networkName
-      __store_express.state.currencySymbol = payload.currencySymbol
-      __store_express.state.chainId = payload.chainId
-      __store_express.state.web3 = payload.web3
-      __store_express.state.icon = payload.icon
-      __store_express.state.balance = payload.balance
-      __store_express.state.login = true
+      state.account = payload.account
+      state.networkName = payload.networkName
+      state.currencySymbol = payload.currencySymbol
+      state.chainId = payload.chainId
+      state.web3 = payload.web3
+      state.icon = payload.icon
+      state.balance = payload.balance
+      state.login = true
     },
     setHomeLevelsSchedule: (payload) => {
-      __store_express.state.home.levelsShedule = payload
+      state.home.levelsShedule = payload
     }
   }
 }
+
+var __store_express = new Store();

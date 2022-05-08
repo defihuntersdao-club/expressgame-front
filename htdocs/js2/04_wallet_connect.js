@@ -159,7 +159,7 @@ async function fetchAccountData() {
   const getBalance = async () => web3.eth.getBalance(accounts[0]);
   const balance = await getBalance();
 
-  __store_express.reducers.wallet({
+  __store_express.set.wallet({
     account: accounts[0],
     networkName: network_name,
     currencySymbol: this_val,
@@ -221,13 +221,13 @@ async function onConnect() {
 
   // Subscribe to accounts change
   provider.on("accountsChanged", (accounts) => {
-    __store_express.reducers.account(accounts[0]);
+    __store_express.set.account(accounts[0]);
     fetchAccountData();
   });
 
   // Subscribe to chainId change
   provider.on("chainChanged", (chainId) => {
-    __store_express.reducers.chainId(chainId);
+    __store_express.set.chainId(chainId);
     log("CHAIN CHANGED");
     fetchAccountData();
   });
