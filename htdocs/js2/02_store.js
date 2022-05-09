@@ -9,7 +9,12 @@ const initialState = {
   web3: null,
   icon: null,
   login: false,
-  home: {}
+  home: {
+    levelsShedule: null,
+    levelsSheduleLoading: null,
+    recentActivity: null,
+    recentActivityLoading: null,
+  }
 }
 
 function Store() {
@@ -36,8 +41,13 @@ function Store() {
       state.login = true
     },
     setHomeLevelsSchedule: (payload) => {
-      state.home.levelsShedule = payload
-    }
+      state.home.levelsShedule = payload.data
+      state.home.levelsSheduleLoading = payload.loading
+    },
+    setHomeRecentActivity: (payload) => {
+      state.home.recentActivity = payload.data
+      state.home.recentActivityLoading = payload.loading
+    },
   }
 }
 

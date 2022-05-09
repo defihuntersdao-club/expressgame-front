@@ -5,30 +5,66 @@ function compare(a, b) {
 }
 
 (function listenerWallet() {
-  var cachedAccount_var = null;
-  let cachedAccount = null;
-  let cachedChainId = null;
+  let x1 = null;
+  let x2 = null;
   const listenerWalletId = setInterval(() => {
+    const y1 = __store_express.get().account;
+    const y2 = __store_express.get().chainId;
+    const z = __store_express.get();
+
     if (
-      (__store_express.get().account !== null && !compare(cachedAccount, __store_express.get().account)) ||
-      (__store_express.get().chainId !== null && !compare(cachedChainId, __store_express.get().chainId))
+      (y1 !== null && !compare(x1, y1)) ||
+      (y2 !== null && !compare(x2, y2))
     ) {
       // Run func rerender
-      __render_html.renderHeaderUser(__store_express.get());
-      __render_html.renderBannerBtnBlock(__store_express.get());
+      __render_html.renderHeaderUser(z);
+      __render_html.renderBannerBtnBlock(z);
 
-      cachedAccount = __store_express.get().account;
-      cachedChainId = __store_express.get().chainId;
+      x1 = y1;
+      x2 = y2;
     }
   }, 1000)
-
-  // window.addEventListener('locationchange', clearTimeout(listenerWalletId));
 })();
 
-// console.log('cachedAccount', cachedAccount)
-// console.log('cachedAccount_var', cachedAccount_var)
+(function listenerHomeLevelsSchedule() {
+  let x1 = null;
+  let x2 = null;
 
+  const l = setInterval(() => {
+    const y1 = __store_express.get().home.levelsShedule;
+    const y2 = __store_express.get().home.levelsSheduleLoading;
+    const z = __store_express.get();
 
-var cachedAccount_var = 10;
-let cachedAccount = 20;
+    if (
+      (y1 !== null && !compare(x1, y1)) ||
+      (y2 !== null && !compare(x2, y2))
+    ) {
+      // Run func rerender
+      __render_html.renderHomeLevelsSchedule(z);
+      x1 = y1;
+      x2 = y2;
+    }
+  }, 1000)
+})();
+
+(function listenerHomeRecentActivity() {
+  let x1 = null;
+  let x2 = null;
+
+  const l = setInterval(() => {
+    const y1 = __store_express.get().home.recentActivity;
+    const y2 = __store_express.get().home.recentActivityLoading;
+    const z = __store_express.get();
+
+    if (
+      (y1 !== null && !compare(x1, y1)) ||
+      (y2 !== null && !compare(x2, y2))
+    ) {
+      // Run func rerender
+      __render_html.renderHomeRecentActivity(z);
+      x1 = y1;
+      x2 = y2;
+    }
+  }, 1000)
+})();
 

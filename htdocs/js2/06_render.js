@@ -4,6 +4,11 @@ function shortCutAddress(account, f = 4, l = 2) {
   return account.substr(0, f) + "..." + account.substr(account.length - l);
 }
 
+function timeToFormat(timestamp) {
+  const t = new Date(timestamp)
+  return `${t.getDate()}.${t.getMonth() + 1}.${t.getFullYear()} ${t.getHours()}:${t.getMinutes()}`
+}
+
 var __render_html = {
 
   renderHeaderUser(state) {
@@ -35,6 +40,102 @@ var __render_html = {
     } else if (!state.login) {
       // revert html to init
     }
+  },
+
+  renderHomeLevelsSchedule(state) {
+    const x = document.getElementById('table-levels-schedule')
+    const renderHeader = `
+      <div class="divTableRow divTableHeader">
+        <div class="divTableCell">Start date</div>
+        <div class="divTableCell">Level</div>
+        <div class="divTableCell"> Value</div>
+        <div class="divTableCell">Time left</div>
+      </div>
+    `
+    let renderRows = `
+      <div class="divTableRow">
+        <div class="divTableCell">...</div>
+        <div class="divTableCell">...</div>
+        <div class="divTableCell">...</div>
+        <div class="divTableCell">...</div>
+      </div>
+    `
+
+    if (state.home.levelsSheduleLoading) {
+      // TODO: Add table loader
+      // renderRows = ``
+    } else {
+      const y = state.home.levelsShedule
+      if (y) {
+        renderRows = y.map((z) => {
+          const hasDays = typeof z.time_left === 'number'
+          const timeLeft = typeof z.time_left === 'number' ? `${z.time_left} days` : z.time_left
+          return `
+            <div class="divTableRow ${hasDays ? 'endtime' : ''}">
+              <div class="divTableCell">${timeToFormat(z.start_date)}</div>
+              <div class="divTableCell">${z.level}</div>
+              <div class="divTableCell">${z.value} ${z.currency}</div>
+              <div class="divTableCell">${timeLeft}</div>
+            </div>
+          `
+        }).join('')
+      }
+    }
+
+    x.innerHTML = renderHeader + renderRows
+  },
+
+  renderHomeRecentActivity(state) {
+    const x = document.getElementById('table-recent-activity')
+    let renderRows = `
+      <div class="divTableRow">
+        <div class="activity-icon"><img src="" alt="" /></div>
+        <div class="activity-wrapper"><a href="">...</a>
+          <div class="activity-info">...</div>
+          <div class="activity-time">...</div>
+        </div>
+      </div>
+    `
+
+    if (state.home.recentActivityLoading) {
+      // TODO: Add table loader
+      // renderRows = ``
+    } else {
+      const y = state.home.recentActivity
+      if (y) {
+        renderRows = y.map((z) => {
+          const icon = z.status === "withdrawal"
+            ? "./img/icons/download_pink.svg" :
+            z.status === "deposit"
+              ? "./img/icons/wallet-pink.svg" :
+              z.status === "account"
+                ? "./img/icons/account-pink.svg" :
+                ""
+
+          return `
+            <div class="divTableRow">
+              <div class="activity-icon"><img src=${icon} alt=${z.status} /></div>
+              <div class="activity-wrapper"><a class="activity-id" href="./account.html">ID ${z.id}</a>
+                ${z.status == "withdrawal" ? `
+                  <div class="activity-info"><span>activated </span>Level ${z.level} <span>in </span><a href=${z.link}>Express</a></div>
+                ` : ''}
+                ${z.status == "deposit" ? `
+                  <div class="activity-info">${z.value} ${z.currency} <span>on </span>Level ${z.level} <span>in </span><a href=${z.link}>Express</a>
+                  </div>
+                ` : ''}
+                ${z.status == "account" ? `
+                  <div class="activity-info"><span>+ partner bonus </span>${z.value} ${z.currency} <span>on </span>Level ${z.level} <span>in
+                  </span><a href=${z.link}>Express</a></div>
+                  ` : ''}
+                  </div>
+                <div class="activity-time"><a class="activity-time-icon" href=${z.link}></a><span>${z.activity_time}</span></div>
+            </div>
+          `
+        }).join('')
+      }
+    }
+
+    x.innerHTML = renderRows
   }
 
 }
