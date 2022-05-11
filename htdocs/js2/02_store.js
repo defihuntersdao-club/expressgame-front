@@ -48,6 +48,16 @@ function Store() {
       state.home.recentActivity = payload.data
       state.home.recentActivityLoading = payload.loading
     },
+    disconnect: () => {
+      state.account = null
+      state.networkName = null
+      state.currencySymbol = null
+      state.chainId = null
+      state.web3 = null
+      state.icon = null
+      state.balance = null
+      state.login = false
+    }
   }
 }
 

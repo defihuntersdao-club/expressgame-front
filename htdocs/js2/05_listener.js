@@ -13,8 +13,8 @@ function compare(a, b) {
     const z = __store_express.get();
 
     if (
-      (y1 !== null && !compare(x1, y1)) ||
-      (y2 !== null && !compare(x2, y2))
+      !compare(x1, y1) ||
+      !compare(x2, y2)
     ) {
       // Run func rerender
       __render_html.renderHeaderUser(z);

@@ -13,10 +13,13 @@ var __render_html = {
 
   renderHeaderUser(state) {
     const hu_el = document.getElementsByClassName('header-user');
-    const render = `
+    const render = state.login ? `
       <div class="header-user"><a class="header-user-btn header-user-btn-single" href="#!"><img src="./img/icons/smart-chain.svg" alt="Smart Chain"/><span>${state.networkName}</span></a>
       <div class="header-user-btn"><a class="header-user-btn-item" href="#!"><img src="./img/icons/bnb.svg" alt="BNB"/><span>${state.balance.toFixed(3)} ${state.currencySymbol}</span></a><a class="header-user-btn-item header-user-btn-wallet" href="#!" data-bs-toggle="modal" data-bs-target="#walletModal"><img src="./img/icons/wallet.svg" alt="wallet"/><span>${shortCutAddress(state.account)}</span></a></div>
       </div>
+    `: `
+      <button class="btn btn-bright" id="clk" onclick=onConnect()>Connect
+      Wallet</button>
     `
     if (!hu_el.length) {
       document.getElementById('clk')?.remove();
@@ -24,7 +27,12 @@ var __render_html = {
       const el = document.getElementsByClassName('header-logo-block');
       el[0].insertAdjacentHTML('afterend', render);
     } else if (!state.login) {
-      // revert html to init
+      document.querySelectorAll(".header-user").forEach(box => {
+        box.remove();
+      });
+
+      const el = document.getElementsByClassName('header-logo-block');
+      el[0].insertAdjacentHTML('afterend', render);
     } else {
       hu_el[0].innerHTML = render;
     }

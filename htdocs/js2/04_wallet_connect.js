@@ -205,6 +205,8 @@ async function refreshAccountData() {
  * Connect wallet button pressed.
  */
 async function onConnect() {
+  const modal = document.getElementById("WEB3_CONNECT_MODAL_ID")
+  modal.style.zIndex = 10;
 
   console.log("Opening a dialog", web3Modal);
   try {
@@ -270,7 +272,18 @@ async function onDisconnect() {
   selectedAccount = null;
 
   //$("#popup").dialog('close');
-  window.parent.$.fancybox.close();
+  // window.parent.$.fancybox.close();
+  const walletModal = document.getElementById("walletModal");
+  walletModal.classList.remove("show");
+  walletModal.style.display = "none";
+  walletModal.removeAttribute("aria-modal");
+  walletModal.setAttribute("aria-hidden", true);
+  document.getElementsByTagName("body")[0].style = "";
+  document.getElementsByTagName("body")[0].classList.remove("modal-open");
+  document.querySelectorAll(".modal-backdrop").forEach(box => {
+    box.remove();
+  });
+  __store_express.set.disconnect();
 }
 
 
