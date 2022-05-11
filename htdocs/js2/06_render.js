@@ -153,6 +153,36 @@ var __render_html = {
     }
 
     x.innerHTML = renderRows
-  }
+  },
+
+  retrodrop(state) {
+    const x = document.getElementsByClassName('retrodrop-unconnetc')[0];
+    const u = document.getElementsByClassName(state.login ? 'retrodrop-unconnetc-blur' : 'retrodrop-balance-wrapper')[0];
+
+    let render = state.login ? `
+      <div class="retrodrop-balance-info">
+        <p>Retro Drop contract balance: <span>595.750/2500 BNB</span>
+        </p>
+        <p>Retro Drop claim count: <span>38087</span>
+        </p>
+      </div>
+      <div class="retrodrop-balance">
+        <div class="retrodrop-filed" style="width: 20%"></div>
+        <span>76.170%</span>
+      </div>
+    ` : ``
+
+    if (state.login) {
+      x.style.display = "none";
+      u.classList.remove("retrodrop-unconnetc-blur");
+      u.classList.add("retrodrop-balance-wrapper");
+      u.innerHTML = render;
+    } else {
+      x.style.display = "inherit";
+      u.classList.add("retrodrop-unconnetc-blur");
+      u.classList.remove("retrodrop-balance-wrapper");
+      u.innerHTML = render;
+    }
+  },
 
 }

@@ -19,6 +19,7 @@ function compare(a, b) {
       // Run func rerender
       __render_html.renderHeaderUser(z);
       __render_html.renderBannerBtnBlock(z);
+      __render_html.retrodrop(z);
 
       x1 = y1;
       x2 = y2;
