@@ -40,13 +40,22 @@ var __render_html = {
 
   renderBannerBtnBlock(state) {
     const bbb_el = document.getElementsByClassName('banner-btn-block');
-    const render = `
+    const render = state.login ? `
       <div class="banner-btn-block"><a class="btn btn-purple btn-icons-right" href="#!" data-bs-toggle="modal" data-bs-target="#registrationModal"><span>Fast Registration</span><img src="./img/icons/arrow-double.svg" alt="Connect Wallet"/></a></div>
+    ` : `
+      <button class="banner-btn-block" onclick=onConnect()>
+        <div class="btn btn-purple btn-icons-left">
+          <img src="./img/icons/wallet.svg" alt="Connect Wallet" />
+          <span>Connect
+            Wallet</span>
+        </div>
+      </button>
     `
+
     if (state.login) {
       bbb_el[0].outerHTML = render;
     } else if (!state.login) {
-      // revert html to init
+      bbb_el[0].outerHTML = render;
     }
   },
 
