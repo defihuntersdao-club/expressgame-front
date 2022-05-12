@@ -155,7 +155,7 @@ var __render_html = {
     x.innerHTML = renderRows
   },
 
-  retrodrop(state) {
+  renderRetrodrop(state) {
     const x = document.getElementsByClassName('retrodrop-unconnetc')[0];
     const u = document.getElementsByClassName(state.login ? 'retrodrop-unconnetc-blur' : 'retrodrop-balance-wrapper')[0];
 
@@ -183,6 +183,16 @@ var __render_html = {
       u.classList.remove("retrodrop-balance-wrapper");
       u.innerHTML = render;
     }
+  },
+
+  renderTimerLevel(state) {
+    const x = document.getElementsByClassName("banner-description");
+    const render = `
+      <p>
+        <strong>Level 1 </strong>available in: <strong>${state}</strong>
+      </p>
+    `
+    x[0].children[1].outerHTML = render;
   },
 
 }
